@@ -46,3 +46,4 @@ void minus_a_mayus(char palabra[MAX_L], int n) {
 
 
 
+
