@@ -27,6 +27,13 @@ void alternada(char palabra[MAX_L, int n]);
 void potencia_recursividad(int base, int pot);
 void frase_mov(char palabra[MAX_L], int x, int y);
 
+void minus_a_mayus(char palabra[MAX_L], int n) {
+    for (int i = 0; i < n; i++) {
+        if (palabra[i] >= 'a' && palabra[i] <= 'z') {
+            palabra[i] = palabra[i] - 'a' + 'A';
+        }
+    }
+}
 
 
 
