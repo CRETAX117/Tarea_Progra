@@ -18,4 +18,24 @@ utilizando recursividad hacer los siguiente ejemplos
 #include <iostream>
 #include <conio.h>
 #include <string.h>
+#include "Gotoxy.h"
 #define MAX_L 100
+
+void minus_a_mayus(char palabra[MAX_L], int n);
+void mayus_a_minus(char palabra[MAX_L], int n);
+void alternada(char palabra[MAX_L, int n]);
+void potencia_recursividad(int base, int pot);
+void frase_mov(char palabra[MAX_L], int x, int y);
+
+
+
+
+
+
+
+
+
+
+
+
+
