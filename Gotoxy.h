@@ -16,6 +16,16 @@ void gotoxy(int x,int y){
       SetConsoleCursorPosition(hcon,dwPos);  
 }
 
+void ocultarCursor(){
+	HANDLE hcon;  
+    hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cci;
+	cci.dwSize = 50;
+	cci.bVisible = FALSE;
+
+	SetConsoleCursorInfo(hcon, &cci);
+}
+
 void lineas_V(int x, int y){
 	for(int i=1; i<y; i++){
 		gotoxy(x, i); printf("%c", 186);
