@@ -48,6 +48,23 @@ void lineas_H(int x, int y){
 	}
 }
 
+// Definición de colores
+enum ConsoleColors {
+    Black = 0,
+    Blue = 1,
+    Green = 2,
+    Red = 4,
+    Yellow = 6,
+    White = 7
+};
+
+// Función para cambiar el color de texto y fondo
+void setColor(int textColor, int bgColor) {
+    int color = textColor + (bgColor * 16);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+//Funcion de letras
 void letras(){
 	int a=39;
 	int b=2;
