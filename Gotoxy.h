@@ -4,8 +4,15 @@ Colocar aqui las funciones graficas
 */
 
 #include <windows.h>
-#define MAX_X 12		//Maximo de pantalla horizontal (inicia en 0)
+#define MAX_X 120		//Maximo de pantalla horizontal (inicia en 0)
 #define MAX_Y 30		//Maximo de pantala vertical (inicia en 0)
+
+//Funciones graficas
+
+void CLS(int tim){
+	system("cls");
+	Sleep(tim);
+}
 
 void gotoxy(int x,int y){  
       HANDLE hcon;  
@@ -14,26 +21,6 @@ void gotoxy(int x,int y){
       dwPos.X = x;  
       dwPos.Y= y;  
       SetConsoleCursorPosition(hcon,dwPos);  
-}
-
-void ocultarCursor(){
-	HANDLE hcon;  
-    hcon = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO cci;
-	cci.dwSize = 50;
-	cci.bVisible = FALSE;
-
-	SetConsoleCursorInfo(hcon, &cci);
-}
-
-void noESCAPE(){
-	while(true){
-		if (GetAsyncKeyState(VK_ESCAPE)){ 				// Verifica si se ha presionado la tecla ESC
-            HWND consoleWnd = GetConsoleWindow(); 		// Obtiene el identificador de la ventana de la consola
-            SendMessage(consoleWnd, WM_CLOSE, 0, 0); 	// Cierra la ventana de la consola
-            break; 										// Sale del bucle
-        }
-	}
 }
 
 void lineas_V(int x, int y){
@@ -46,68 +33,6 @@ void lineas_H(int x, int y){
 	for(int i=1; i<x; i++){
 		gotoxy(i, y); printf("%c", 205);
 	}
-}
-
-// Definición de colores
-enum ConsoleColors {
-    Black = 0,
-    Blue = 1,
-    Green = 2,
-    Red = 4,
-    Yellow = 6,
-    White = 7
-};
-
-// Función para cambiar el color de texto y fondo
-void setColor(int textColor, int bgColor) {
-    int color = textColor + (bgColor * 16);
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-}
-
-//Funcion de letras
-void letras(){
-	int a=39;
-	int b=2;
-	
-	// Imprimir la letra E
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);
-	
-	gotoxy(7+a, 9+b); printf("|||||");
-    gotoxy(7+a, 10+b); printf("||");
-    gotoxy(7+a, 11+b); printf("|||||");
-    gotoxy(7+a, 12+b); printf("||");
-    gotoxy(7+a, 13+b); printf("|||||");
-    
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-                                     
-    // Imprimir la letra S       
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);                              
-    
-	gotoxy(13+a, 9+b); printf("|||||");
-    gotoxy(13+a, 10+b); printf("||");
-    gotoxy(13+a, 11+b); printf("|||||");
-    gotoxy(13+a, 12+b); printf("   ||");
-    gotoxy(13+a, 13+b); printf("|||||");
-
-    // Imprimir la letra P
-    gotoxy(19+a, 9+b); printf("|||||");
-    gotoxy(19+a, 10+b); printf("|| ||");
-    gotoxy(19+a, 11+b); printf("|||||");
-    gotoxy(19+a, 12+b); printf("||");
-    gotoxy(19+a, 13+b); printf("||");
-    
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);
-
-    // Imprimir la letra E
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    
-    gotoxy(25+a, 9+b); printf("|||||");
-    gotoxy(25+a, 10+b); printf("||");
-    gotoxy(25+a, 11+b); printf("|||||");
-    gotoxy(25+a, 12+b); printf("||");
-    gotoxy(25+a, 13+b); printf("|||||");
-    
-     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 }
 
 void margenes(){
@@ -171,5 +96,111 @@ void carga(int alt, int tim){
 	for(int i=40;i < 76+3; i++){
     	gotoxy(i,alt); printf("%c",219);
     	Sleep(tim);
+	}
+}
+
+// Definición de colores
+enum ConsoleColors {
+    Black = 0,
+    Blue = 1,
+    Green = 2,
+    Red = 4,
+    Yellow = 6,
+    White = 7
+};
+
+// Función para cambiar el color de texto y fondo
+void setColor(int textColor, int bgColor) {
+    int color = textColor + (bgColor * 16);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void exitit(){
+	char salida[] = {"CERRANDO SESION"};
+	centrarTexto(salida, 13);
+	carga(14, 42);
+}
+
+void erase(int xi, int yi, int xf, int yf){
+	for(int i=yi; i<=yf; i++){
+		for(int j=xi; j<=xf; j++){
+			gotoxy(j, i); printf(" ");
+		}
+	}
+}
+
+//Funcion de letras
+void espe(){
+	int a=39;
+	int b=2;
+	
+	// Imprimir la letra E
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);
+	
+	gotoxy(7+a, 9+b); printf("|||||");
+    gotoxy(7+a, 10+b); printf("||");
+    gotoxy(7+a, 11+b); printf("|||||");
+    gotoxy(7+a, 12+b); printf("||");
+    gotoxy(7+a, 13+b); printf("|||||");
+    
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                                     
+    // Imprimir la letra S       
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);                              
+    
+	gotoxy(13+a, 9+b); printf("|||||");
+    gotoxy(13+a, 10+b); printf("||");
+    gotoxy(13+a, 11+b); printf("|||||");
+    gotoxy(13+a, 12+b); printf("   ||");
+    gotoxy(13+a, 13+b); printf("|||||");
+
+    // Imprimir la letra P
+    gotoxy(19+a, 9+b); printf("|||||");
+    gotoxy(19+a, 10+b); printf("|| ||");
+    gotoxy(19+a, 11+b); printf("|||||");
+    gotoxy(19+a, 12+b); printf("||");
+    gotoxy(19+a, 13+b); printf("||");
+    
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);
+
+    // Imprimir la letra E
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+    
+    gotoxy(25+a, 9+b); printf("|||||");
+    gotoxy(25+a, 10+b); printf("||");
+    gotoxy(25+a, 11+b); printf("|||||");
+    gotoxy(25+a, 12+b); printf("||");
+    gotoxy(25+a, 13+b); printf("|||||");
+    
+     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+}
+
+//_____________________________________________________________________________________
+
+//Funciones de control
+void ocultarCursor(){
+	HANDLE hcon;  
+    hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cci;
+	cci.dwSize = 50;
+	cci.bVisible = FALSE;
+
+	SetConsoleCursorInfo(hcon, &cci);
+}
+
+
+void noESCAPE(){
+	char esc = 27;
+	char aux;
+	while(true){
+		aux = getch();
+		if (aux == esc){ 								// Verifica si se ha presionado la tecla ESC
+            HWND consoleWnd = GetConsoleWindow(); 		// Obtiene el identificador de la ventana de la consola
+			CLS(0);
+			margenes();
+			exitit();
+            SendMessage(consoleWnd, WM_CLOSE, 0, 0); 	// Cierra la ventana de la consola
+            break; 										// Sale del bucle
+        }
 	}
 }

@@ -14,16 +14,12 @@ Aqui ingresan solo las funciones para probar
 */
 
 #include <iostream>
+#include "Menu.h"
+#include "Funciones.h"
 
 int main(int argc, char** argv) {
-	//TRANSFORMAR DE MINUSCULAS A MAYUSCULAS
-	char palabra[MAX_L];
-	int n;
-		printf("Ingresar una palabra: ");
-		scanf("%s", palabra);
-		n = strlen(palabra);
-		minus_a_mayus(palabra, n);
-		printf("Palabra en mayusculas: %s\n", palabra);
-	
+	caratula();
+	menu();
+	CLS();
 	return 0;
 }
