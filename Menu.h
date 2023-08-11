@@ -61,9 +61,13 @@ void initSelect(){
 			if(x==0){					//Funcion 0
 				CLS(0);
 				//Aqui pegan su funcion f_(nombre)
+				NO_RETURN:
 				sec = getch();
 				if(sec==ESCAPE){
 					goto RETORNO;
+				}else{
+					Sleep(1);
+					goto NO_RETURN;
 				}
 				break;
 				
@@ -73,33 +77,44 @@ void initSelect(){
 				sec = getch();
 				if(sec==ESCAPE){
 					goto RETORNO;
+				}else{
+					Sleep(1);
+					goto NO_RETURN;
 				}
 				break;
 				
 			}else if(x==2){				//Funcion 2
 				CLS(0);
-				//Aqui pegan su funcion f_(nombre)
+				f_alternada();
 				sec = getch();
 				if(sec==ESCAPE){
 					goto RETORNO;
+				}else{
+					Sleep(1);
+					goto NO_RETURN;
 				}
 				break;
 				
 			}else if(x==3){				//Funcion 3
 				CLS(0);
 				//Aqui pegan su funcion f_(nombre)
-				sec = getch();
 				if(sec==ESCAPE){
 					goto RETORNO;
+				}else{
+					Sleep(1);
+					goto NO_RETURN;
 				}
 				break;
 				
 			}else if(x==4){				//Funcio 4
 				CLS(0);
-				//Aqui pegan su funcion f_(nombre)
+				f_division_Rsucesivas();
 				sec = getch();
 				if(sec==ESCAPE){
 					goto RETORNO;
+				}else{
+					Sleep(1);
+					goto NO_RETURN;
 				}
 				break;
 				
@@ -109,6 +124,9 @@ void initSelect(){
 				sec = getch();
 				if(sec==ESCAPE){
 					goto RETORNO;
+				}else{
+					Sleep(1);
+					goto NO_RETURN;
 				}
 				break;
 				
