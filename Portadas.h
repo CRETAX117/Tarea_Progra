@@ -4,7 +4,6 @@ Colocar aqui las portadas
 */
 #include <conio.h>
 #include "Gotoxy.h"
-#define MAX_LEN 100
 #define UP 72
 #define DOWN 80
 #define LEFT 75
@@ -64,12 +63,12 @@ void caratula(){
 	}
 }
 
-char t1[MAX_LEN] = {"Mayusculas a Minusculas"};
-char t2[MAX_LEN] = {"Minusculas a Mayusculas"};
-char t3[MAX_LEN] = {"Mayus y Minus alternadas"};
-char t4[MAX_LEN] = {"Elevar Base a una Potencia"};
-char t5[MAX_LEN] = {"Dividir 2 numeros"};
-char t6[MAX_LEN] = {"Frase en movimiento"};
+char t1[MAX_L] = {"Mayusculas a Minusculas"};
+char t2[MAX_L] = {"Minusculas a Mayusculas"};
+char t3[MAX_L] = {"Mayus y Minus alternadas"};
+char t4[MAX_L] = {"Elevar Base a una Potencia"};
+char t5[MAX_L] = {"Dividir 2 numeros"};
+char t6[MAX_L] = {"Frase en movimiento"};
 
 void options(){
 	int a=12;
@@ -95,7 +94,7 @@ void options(){
 }
 
 void menuSelect(){
-	char titulo[MAX_LEN] = {"MENU INTERACTIVO"};
+	char titulo[MAX_L] = {"MENU INTERACTIVO"};
 	
 	ocultarCursor();
 	margenes();

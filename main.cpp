@@ -15,11 +15,9 @@ Aqui ingresan solo las funciones para probar
 
 #include <iostream>
 #include "Menu.h"
-#include "Funciones.h"
 
 int main(int argc, char** argv) {
 //	caratula();
-	CLS(0);
 	initSelect();
 	return 0;
 }

@@ -4,6 +4,7 @@ Colocar aqui las funciones graficas
 */
 
 #include <windows.h>
+#define MAX_L 100		//Maximo de caracteres en una cadena
 #define MAX_X 120		//Maximo de pantalla horizontal (inicia en 0)
 #define MAX_Y 30		//Maximo de pantala vertical (inicia en 0)
 
@@ -131,6 +132,12 @@ void carga(int alt, int tim){
 	}
 }
 
+void regresar(){
+	char texto[MAX_L] = {"Pulse la tecla ESC para regresar al menu principal"};
+	cuadros1(29, 18, 60, 1);
+	centrarTexto(texto, 19);
+}
+
 // Definición de colores
 enum ConsoleColors {
     Black = 0,
@@ -214,12 +221,21 @@ void ocultarCursor(){
 	HANDLE hcon;  
     hcon = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO cci;
-	cci.dwSize = 50;
+	cci.dwSize = 2;
 	cci.bVisible = FALSE;
 
 	SetConsoleCursorInfo(hcon, &cci);
 }
 
+void mostrarCursor(){
+	HANDLE hcon;  
+    hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cci;
+	cci.dwSize = 2;
+	cci.bVisible = TRUE;
+
+	SetConsoleCursorInfo(hcon, &cci);
+}
 
 void noESCAPE(){
 	char esc = 27;
