@@ -26,6 +26,16 @@ void ocultarCursor(){
 	SetConsoleCursorInfo(hcon, &cci);
 }
 
+void noESCAPE(){
+	while(true){
+		if (GetAsyncKeyState(VK_ESCAPE)){ 				// Verifica si se ha presionado la tecla ESC
+            HWND consoleWnd = GetConsoleWindow(); 		// Obtiene el identificador de la ventana de la consola
+            SendMessage(consoleWnd, WM_CLOSE, 0, 0); 	// Cierra la ventana de la consola
+            break; 										// Sale del bucle
+        }
+	}
+}
+
 void lineas_V(int x, int y){
 	for(int i=1; i<y; i++){
 		gotoxy(x, i); printf("%c", 186);
