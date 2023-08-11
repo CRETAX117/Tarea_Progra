@@ -10,6 +10,7 @@ Colocar aqui las portadas
 #define LEFT 75
 #define RIGHT 77
 #define ENTER 13
+#define ESCAPE 27
 
 /*
 Codigo reutilizable
