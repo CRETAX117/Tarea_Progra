@@ -51,7 +51,7 @@ void margenes(){
 //	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 }
 
-void cuadros(int x, int y, int m, int n) {
+void cuadros1(int x, int y, int m, int n) {
     int i, j;
 
     // Dibujar la esquina superior izquierda
@@ -83,9 +83,41 @@ void cuadros(int x, int y, int m, int n) {
     printf("%c", 188);
 }
 
+void cuadros2(int x, int y, int m, int n) {
+    int i, j;
+
+    // Dibujar la esquina superior izquierda
+    gotoxy(x, y);
+    printf("%c", 218);
+
+    // Dibujar la parte superior del cuadro
+    for (i = 0; i < m; i++) {
+        printf("%c", 196);
+    }
+    printf("%c", 191);
+
+    // Dibujar los lados del cuadro
+    for (j = 1; j <= n; j++) {
+        gotoxy(x, y + j);
+        printf("%c",179);
+        gotoxy(x + m + 1, y + j);
+        printf("%c", 179);
+    }
+
+    // Dibujar la esquina inferior izquierda
+    gotoxy(x, y + n + 1);
+    printf("%c", 192);
+
+    // Dibujar la parte inferior del cuadro
+    for (i = 0; i < m; i++) {
+        printf("%c", 196);
+    }
+    printf("%c", 217);
+}
+
 void centrarTexto(char* texto, int f) {
     int longitud = strlen(texto);
-    gotoxy(40 - (longitud / 2), f);
+    gotoxy(60 - (longitud / 2), f);
     printf(texto);
 }
 
@@ -118,7 +150,7 @@ void setColor(int textColor, int bgColor) {
 void exitit(){
 	char salida[] = {"CERRANDO SESION"};
 	centrarTexto(salida, 13);
-	carga(14, 42);
+	carga(14, 10);
 }
 
 void erase(int xi, int yi, int xf, int yf){

@@ -18,8 +18,8 @@ Aqui ingresan solo las funciones para probar
 #include "Funciones.h"
 
 int main(int argc, char** argv) {
-	caratula();
-	menu();
-	CLS();
+//	caratula();
+	CLS(0);
+	initSelect();
 	return 0;
 }
