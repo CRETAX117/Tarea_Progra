@@ -35,6 +35,41 @@ int potencia_recursividad(int base, int pot);
 float division_Rsucesivas(float a, float b);
 void frase_mov(char palabra[MAX_L], int x, int y);
 
+/*
+FUNCIONES ADICIONALES
+*/
+
+int numeros(char a[]){
+	int i;
+	int error = 0;
+	while(a[i] != '\0'){
+		if(a[i] < '0' || a[i] > '9'){
+			error = 1;
+			break;
+		}
+		i++;
+	}
+	
+	return error;
+}
+
+int letras(char a[]){
+	int i;
+	int error = 0;
+	while(a[i] != '\0'){
+		if((a[i] < 'A' || a[i] > 'Z') && (a[i] < 'a' || a[i] > 'z')){
+			error = 1;
+			break;
+		}
+		i++;
+	}
+	
+	return error;
+}
+
+char errLetras[MAX_L] = {"Por favor solo ingrese letras"};
+char errNumeros[MAX_L] = {"Por favor solo ingrese numeros"};
+
 //Primero hacen su funcion
 //Funcion Mayuscula a Minuscula: Josue Chiriboga
 void mayus_a_minus(char palabra[MAX_L], int n) {
@@ -83,7 +118,7 @@ float division_Rsucesivas(float a, float b){
     }
 }
 
-void frase_mov(const char palabra[MAX_L], int x, int y) {
+void frase_mov(char palabra[MAX_L], int x, int y) {
     for (int i = 0; i < y; i++) {
         printf("\n");
     }
@@ -101,6 +136,8 @@ void frase_mov(const char palabra[MAX_L], int x, int y) {
 si no sabes el numero de tu funcion (.-.), esta arriba desde la linea 7 entre []
 */
 void f_mayus_a_minus(){
+	S0:
+	int error;
 	char titulo[MAX_L] = {"TRANSFORMAR UNA PALABRA DE MAYUSCULAS A MINUSCULAS"};	//Crear una palabra titulo con el titulo 
 	margenes();																		//Siempre colocar los margenes
 	char palabra[MAX_L];
@@ -109,7 +146,17 @@ void f_mayus_a_minus(){
 	centrarTexto(titulo, 2);														//Copian lo mismo
 	mostrarCursor();																//Si se va a escribir ponen el mostrar el cursor y el ocultar
 	gotoxy(3, 4); printf("Ingresar una palabra: ");									//Cada impresion con un gotoxy dentro del margen
-	gets(palabra); fflush(stdin);
+	gets(palabra); fflush(stdin); error=letras(palabra);
+	
+	if(error != 0){
+		CLS(0);
+		margenes();
+		cuadros1(44, 13, 31, 1);
+		ocultarCursor();
+		centrarTexto(errLetras, 14);
+		Sleep(1200); CLS(0); goto S0;
+	}
+	
 	n = strlen(palabra);
 	mayus_a_minus(palabra, n);
 	gotoxy(3,6); printf("Palabra en minusculas: %s\n", palabra);					//De igual manera
@@ -118,6 +165,8 @@ void f_mayus_a_minus(){
 }
 
 void f_minus_a_mayus(){
+	S1:
+	int error;
 	char titulo[MAX_L] = {"TRANSFORMAR UNA PALABRA DE MINUSCULAS A MAYUSCULAS"};	//Crear una palabra titulo con el titulo 
 	margenes();																		//Siempre colocar los margenes
 	char palabra[MAX_L];
@@ -126,7 +175,17 @@ void f_minus_a_mayus(){
 	centrarTexto(titulo, 2);														//Copian lo mismo
 	mostrarCursor();																//Si se va a escribir ponen el mostrar el cursor y el ocultar
 	gotoxy(3, 4); printf("Ingresar una palabra: ");									//Cada impresion con un gotoxy dentro del margen
-	gets(palabra); fflush(stdin);
+	gets(palabra); fflush(stdin); error=letras(palabra);
+	
+	if(error != 0){
+		CLS(0);
+		margenes();
+		cuadros1(44, 13, 31, 1);
+		ocultarCursor();
+		centrarTexto(errLetras, 14);
+		Sleep(1200); CLS(0); goto S1;
+	}
+	
 	n = strlen(palabra);
 	minus_a_mayus(palabra, n);
 	gotoxy(3,6); printf("Palabra en mayusculas: %s\n", palabra);					//De igual manera
@@ -135,6 +194,8 @@ void f_minus_a_mayus(){
 }
 
 void f_alternada(){
+	S2:
+	int error;
 	char titulo[MAX_L] = {"ALTERNAR LETRAS EN MAYUSCULAS Y MINUSCULAS"};
 	margenes();
 	char palabra[MAX_L];
@@ -143,7 +204,17 @@ void f_alternada(){
 	centrarTexto(titulo, 2);
 	mostrarCursor();
 	gotoxy(3, 4); printf("Ingresar una palabra: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%s", palabra); fflush(stdin);
+	scanf("%s", palabra); fflush(stdin); error=letras(palabra);
+	
+	if(error != 0){
+		CLS(0);
+		margenes();
+		cuadros1(44, 13, 31, 1);
+		ocultarCursor();
+		centrarTexto(errLetras, 14);
+		Sleep(1200); CLS(0); goto S2;
+	}
+	
 	n = strlen(palabra);
 	alternada(palabra, n);
 	gotoxy(3,6); printf("La palabra con alternacion es: %s\n", palabra);					//De igual manera
@@ -152,39 +223,88 @@ void f_alternada(){
 }
 
 void potencia_recursividad(){
+	S3:
+	int error;
 	char titulo[MAX_L] = {"ELEVAR UNA BASE A UN EXPONENTE"};
+	char base[6];
+	char exponente[6];
+	int resultado;
 	margenes();
-	int base, exponente, resultado;
 	
 	centrarTexto(titulo, 2);
 	mostrarCursor();
     gotoxy(3, 4); printf("Ingrese la base: ");
-    scanf("%d", &base); fflush(stdin);
+    scanf("%s", base); fflush(stdin); error=numeros(base);
+    int bas = atoi(base);
+	
+	if(error != 0){
+		CLS(0);
+		margenes();
+		cuadros1(44, 13, 31, 1);
+		ocultarCursor();
+		centrarTexto(errNumeros, 14);
+		Sleep(1200); CLS(0); goto S3;
+	}                           
+	
     gotoxy(3, 6); printf("Ingrese el exponente: ");
-    scanf("%d", &exponente); fflush(stdin);
-    resultado = potencia_recursividad(base, exponente);
+    scanf("%s", &exponente); fflush(stdin); error=numeros(exponente);
+    int exp = atoi(exponente);
+	
+	if(error != 0){
+		CLS(0);
+		margenes();
+		cuadros1(44, 13, 31, 1);
+		ocultarCursor();
+		centrarTexto(errNumeros, 14);
+		Sleep(1200); CLS(0); goto S3;
+	}
+	
+    resultado = potencia_recursividad(bas, exp);
     gotoxy(3, 8); printf("El resultado es: %d\n", resultado);
     ocultarCursor();
 	regresar();
 }
 
 void f_division_Rsucesivas(){
+	S4:
+	int error;
 	char titulo[MAX_L] = {"DIVISION DE DOS NUMEROS USANDO RESTAS SUCESIVAS"};
 	margenes();
-	float a, b;
+	char num1[10];
+	char num2[10];
 	
 	centrarTexto(titulo, 2);
 	mostrarCursor();
 	gotoxy(3, 4); printf("Ingrese el primer numero: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%f", &a); fflush(stdin);
+	scanf("%s", &num1); fflush(stdin); error=numeros(num1);
+    int a = atoi(num1);
+	
+	if(error != 0){
+		CLS(0);
+		margenes();
+		cuadros1(44, 13, 31, 1);
+		ocultarCursor();
+		centrarTexto(errNumeros, 14);
+		Sleep(1200); CLS(0); goto S4;
+	}
 	gotoxy(3, 6); printf("Ingrese el segundo numero: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%f", &b); fflush(stdin);
+	scanf("%s", &num2); fflush(stdin); error=numeros(num2);
+    int b = atoi(num2);
+	
+	if(error != 0){
+		CLS(0);
+		margenes();
+		cuadros1(44, 13, 31, 1);
+		ocultarCursor();
+		centrarTexto(errNumeros, 14);
+		Sleep(1200); CLS(0); goto S4;
+	}
 	int c = division_Rsucesivas(a, b);
 	gotoxy(3,8); printf("El resultado de la division es: %d\n", c);					//De igual manera
 	ocultarCursor();
 	regresar();
 }
-void f_frase_mov() {
+void f_frase_mov(){
     char titulo[MAX_L] = {"FRASE ANIMADA"};
     margenes();
     char frase[MAX_L];
@@ -192,7 +312,7 @@ void f_frase_mov() {
     centrarTexto(titulo, 2);
     mostrarCursor();
     gotoxy(3, 4); printf("Ingrese una frase: ");
-    fgets(frase, sizeof(frase), stdin); fflush(stdin);
+    fgets(frase, sizeof(frase), stdin); fflush(stdin); 
     frase[strcspn(frase, "\n")] = '\0'; 
     int screenHeight = 10;
     int len = strlen(frase);

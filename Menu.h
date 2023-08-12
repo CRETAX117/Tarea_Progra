@@ -8,8 +8,8 @@ Se estructurara el menu funcional
 void initSelect(){
 	RETORNO:
 	CLS(0);
-	menuSelect();
 	ocultarCursor();
+	menuSelect();
 	int a = 8;
 	char in, sec;
 	int x;
@@ -17,14 +17,13 @@ void initSelect(){
 	while(true){
 		in = getch();
 		if(in == UP || in == DOWN || in == LEFT || in == RIGHT){
+			setColor(Black, White);
+			cuadros1(16, 6, 28,5); 
+			setColor(White, Black);
+			x=0;
 			break;
 		}		
 	}
-	
-	options();
-	setColor(Black, White);
-	cuadros1(16, 6, 28,5); 
-	setColor(White, Black);	
 	
 	while(true){
 		in=getch();
@@ -65,7 +64,6 @@ void initSelect(){
 				sec = getch();
 				if(sec==ESCAPE){
 					x=0;
-					goto RETORNO;
 				}else{
 					Sleep(1);
 					goto NO_RETURN;
@@ -79,7 +77,7 @@ void initSelect(){
 				if(sec==ESCAPE){
 					x=0;
 					goto RETORNO;
-				}else{
+				}else{	
 					Sleep(1);
 					goto NO_RETURN;
 				}

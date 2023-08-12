@@ -28,11 +28,14 @@ setColor(White, Black);
 */
 
 void caratula(){
+	char mensaje[MAX_L] = {"Pulse cualquier tecla para continuar"};
 	int select;	
 	int c=2;
 	int d=20;
 	int e=30;
 	
+	margenes();
+	ocultarCursor();
 	gotoxy(20+d, 5-c); printf("UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE");
 	gotoxy(26+d, 9-c); printf("Electr%cnica y Automatizacion", 162);
 	
@@ -48,10 +51,9 @@ void caratula(){
 	
 	cuadros1(19+d, 4-c, 39, 1);
 	cuadros1(25+d,8-c, 28, 1);
-	cuadros1(45, 12-c, 25, 5);
+	cuadros1(46, 12-c, 25, 5);
 	cuadros1(39,18, 39, 6);
 	
-	margenes();
 	
 //	gotoxy(10+e, 28); printf("Para iniciar pulse 1: "); scanf("%d", select); fflush(stdin);
     for(int i=40;i < 76+3; i++){
@@ -61,6 +63,7 @@ void caratula(){
     	gotoxy(i,27); printf("%c",219);
     	Sleep(52);
 	}
+	centrarTexto(mensaje, 29); getch();
 }
 
 char t1[MAX_L] = {"Mayusculas a Minusculas"};

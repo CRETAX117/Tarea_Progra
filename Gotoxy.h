@@ -170,7 +170,7 @@ void erase(int xi, int yi, int xf, int yf){
 
 //Funcion de letras
 void espe(){
-	int a=39;
+	int a=41;
 	int b=2;
 	
 	// Imprimir la letra E
