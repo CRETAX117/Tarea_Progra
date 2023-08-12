@@ -35,7 +35,15 @@ float division_Rsucesivas(float a, float b);
 void frase_mov(char palabra[MAX_L], int x, int y);
 
 //Primero hacen su funcion
-
+//Funcion Mayuscula a Minuscula: Josue Chiriboga
+void mayus_a_minus(char palabra[MAX_L], int n) {
+    for (int i = 0; i < n; i++) {
+        if (palabra[i] >= 'A' && palabra[i] <= 'Z') {
+            palabra[i] = palabra[i] - 'A' + 'a';
+        }
+    }
+}
+//Funcion Minuscula a Mayuscula: Josue Chiriboga
 void minus_a_mayus(char palabra[MAX_L], int n) {
     for(int i = 0; i < n; i++) {
         if (palabra[i] >= 'a' && palabra[i] <= 'z') {
@@ -73,6 +81,23 @@ float division_Rsucesivas(float a, float b){
 /*Al acabar se van a menu al if de ENTER y lo guardan en el numero de su funcion, hay mas explicacion ahi
 si no sabes el numero de tu funcion (.-.), esta arriba desde la linea 7 entre []
 */
+void f_mayus_a_minus(){
+	char titulo[MAX_L] = {"TRANSFORMAR UNA PALABRA DE MAYUSCULAS A MINUSCULAS"};	//Crear una palabra titulo con el titulo 
+	margenes();																		//Siempre colocar los margenes
+	char palabra[MAX_L];
+	int n;
+	
+	centrarTexto(titulo, 2);														//Copian lo mismo
+	mostrarCursor();																//Si se va a escribir ponen el mostrar el cursor y el ocultar
+	gotoxy(3, 4); printf("Ingresar una palabra: ");									//Cada impresion con un gotoxy dentro del margen
+	gets(palabra); fflush(stdin);
+	n = strlen(palabra);
+	mayus_a_minus(palabra, n);
+	gotoxy(3,6); printf("Palabra en minusculas: %s\n", palabra);					//De igual manera
+	ocultarCursor();
+	regresar();																		//Siempre colocan el regresar();
+}
+
 void f_minus_a_mayus(){
 	char titulo[MAX_L] = {"TRANSFORMAR UNA PALABRA DE MINUSCULAS A MAYUSCULAS"};	//Crear una palabra titulo con el titulo 
 	margenes();																		//Siempre colocar los margenes
@@ -82,7 +107,7 @@ void f_minus_a_mayus(){
 	centrarTexto(titulo, 2);														//Copian lo mismo
 	mostrarCursor();																//Si se va a escribir ponen el mostrar el cursor y el ocultar
 	gotoxy(3, 4); printf("Ingresar una palabra: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%s", palabra); fflush(stdin);
+	gets(palabra); fflush(stdin);
 	n = strlen(palabra);
 	minus_a_mayus(palabra, n);
 	gotoxy(3,6); printf("Palabra en mayusculas: %s\n", palabra);					//De igual manera

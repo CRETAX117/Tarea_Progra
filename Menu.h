@@ -61,6 +61,7 @@ void initSelect(){
 			if(x==0){					//Funcion 0
 				CLS(0);
 				//Aqui pegan su funcion f_(nombre)
+				f_mayus_a_minus();
 				NO_RETURN:
 				sec = getch();
 				if(sec==ESCAPE){
