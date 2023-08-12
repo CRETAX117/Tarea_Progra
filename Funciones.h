@@ -82,7 +82,7 @@ void f_minus_a_mayus(){
 	centrarTexto(titulo, 2);														//Copian lo mismo
 	mostrarCursor();																//Si se va a escribir ponen el mostrar el cursor y el ocultar
 	gotoxy(3, 4); printf("Ingresar una palabra: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%s", palabra);
+	scanf("%s", palabra); fflush(stdin);
 	n = strlen(palabra);
 	minus_a_mayus(palabra, n);
 	gotoxy(3,6); printf("Palabra en mayusculas: %s\n", palabra);					//De igual manera
@@ -99,7 +99,7 @@ void f_alternada(){
 	centrarTexto(titulo, 2);
 	mostrarCursor();
 	gotoxy(3, 4); printf("Ingresar una palabra: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%s", palabra);
+	scanf("%s", palabra); fflush(stdin);
 	n = strlen(palabra);
 	alternada(palabra, n);
 	gotoxy(3,6); printf("La palabra con alternacion es: %s\n", palabra);					//De igual manera
@@ -115,9 +115,9 @@ void f_division_Rsucesivas(){
 	centrarTexto(titulo, 2);
 	mostrarCursor();
 	gotoxy(3, 4); printf("Ingrese el primer numero: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%f", &a);
+	scanf("%f", &a); fflush(stdin);
 	gotoxy(3, 6); printf("Ingrese el segundo numero: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%f", &b);
+	scanf("%f", &b); fflush(stdin);
 	int c = division_Rsucesivas(a, b);
 	gotoxy(3,8); printf("El resultado de la division es: %d\n", c);					//De igual manera
 	ocultarCursor();
