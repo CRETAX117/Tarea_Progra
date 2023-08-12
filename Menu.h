@@ -100,7 +100,8 @@ void initSelect(){
 				
 			}else if(x==3){				//Funcion 3
 				CLS(0);
-				//Aqui pegan su funcion f_(nombre)
+				potencia_recursividad();
+				sec = getch();
 				if(sec==ESCAPE){
 					x=0;
 					goto RETORNO;
@@ -125,7 +126,7 @@ void initSelect(){
 				
 			}else if(x==5){				//Funcion 5
 				CLS(0);
-				//Aqui pegan su funcion f_(nombre)
+				f_frase_mov();
 				sec = getch();
 				if(sec==ESCAPE){
 					x=0;

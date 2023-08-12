@@ -18,6 +18,7 @@ utilizando recursividad hacer los siguiente ejemplos
 #include <iostream>
 #include <conio.h>
 #include <string.h>
+#include <windows.h>
 #define MAX_L 100
 
 /*
@@ -66,12 +67,30 @@ void alternada(char palabra[MAX_L], int n){
     }
 }
 
+int potencia_recursividad(int base, int pot) {
+    if (pot == 0) {
+        return 1;
+    } else {
+        return base * potencia_recursividad(base, pot - 1);
+    }
+}
+
 float division_Rsucesivas(float a, float b){
 	if (a < b) {
         return 0;
     } else {
         return 1 + division_Rsucesivas(a - b, b);
     }
+}
+
+void frase_mov(const char palabra[MAX_L], int x, int y) {
+    for (int i = 0; i < y; i++) {
+        printf("\n");
+    }
+    for (int i = 0; i < x; i++) {
+        printf(" ");
+    }
+    printf("%s\n", palabra);
 }
 
 
@@ -132,6 +151,23 @@ void f_alternada(){
 	regresar();
 }
 
+void potencia_recursividad(){
+	char titulo[MAX_L] = {"ELEVAR UNA BASE A UN EXPONENTE"};
+	margenes();
+	int base, exponente, resultado;
+	
+	centrarTexto(titulo, 2);
+	mostrarCursor();
+    gotoxy(3, 4); printf("Ingrese la base: ");
+    scanf("%d", &base); fflush(stdin);
+    gotoxy(3, 6); printf("Ingrese el exponente: ");
+    scanf("%d", &exponente); fflush(stdin);
+    resultado = potencia_recursividad(base, exponente);
+    gotoxy(3, 8); printf("El resultado es: %d\n", resultado);
+    ocultarCursor();
+	regresar();
+}
+
 void f_division_Rsucesivas(){
 	char titulo[MAX_L] = {"DIVISION DE DOS NUMEROS USANDO RESTAS SUCESIVAS"};
 	margenes();
@@ -148,9 +184,31 @@ void f_division_Rsucesivas(){
 	ocultarCursor();
 	regresar();
 }
-
-
-
+void f_frase_mov() {
+    char titulo[MAX_L] = {"FRASE ANIMADA"};
+    margenes();
+    char frase[MAX_L];
+    
+    centrarTexto(titulo, 2);
+    mostrarCursor();
+    gotoxy(3, 4); printf("Ingrese una frase: ");
+    fgets(frase, sizeof(frase), stdin); fflush(stdin);
+    frase[strcspn(frase, "\n")] = '\0'; 
+    int screenHeight = 10;
+    int len = strlen(frase);
+    for (int i = 0; i < screenHeight; i++) {
+        frase_mov(frase, 0, i);
+        Sleep(200); 
+        system("cls");
+    }
+    for (int i = screenHeight - 2; i >= 0; i--) {
+        frase_mov(frase, 0, i);
+        Sleep(200); 
+        system("cls");
+    }
+    ocultarCursor();
+    regresar();
+}
 
 
 
