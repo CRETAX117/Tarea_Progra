@@ -31,7 +31,7 @@ void minus_a_mayus(char palabra[MAX_L], int n);
 void mayus_a_minus(char palabra[MAX_L], int n);
 void alternada(char palabra[MAX_L], int n);
 int potencia_recursividad(int base, int pot);
-int division_Rsucesivas(int a, int b);
+float division_Rsucesivas(float a, float b);
 void frase_mov(char palabra[MAX_L], int x, int y);
 
 //Primero hacen su funcion
@@ -58,7 +58,7 @@ void alternada(char palabra[MAX_L], int n){
     }
 }
 
-int division_Rsucesivas(int a, int b){
+float division_Rsucesivas(float a, float b){
 	if (a < b) {
         return 0;
     } else {
@@ -110,14 +110,14 @@ void f_alternada(){
 void f_division_Rsucesivas(){
 	char titulo[MAX_L] = {"DIVISION DE DOS NUMEROS USANDO RESTAS SUCESIVAS"};
 	margenes();
-	int a, b;
+	float a, b;
 	
 	centrarTexto(titulo, 2);
 	mostrarCursor();
 	gotoxy(3, 4); printf("Ingrese el primer numero: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%d", &a);
+	scanf("%f", &a);
 	gotoxy(3, 6); printf("Ingrese el segundo numero: ");									//Cada impresion con un gotoxy dentro del margen
-	scanf("%d", &b);
+	scanf("%f", &b);
 	int c = division_Rsucesivas(a, b);
 	gotoxy(3,8); printf("El resultado de la division es: %d\n", c);					//De igual manera
 	ocultarCursor();
