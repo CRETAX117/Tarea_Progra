@@ -64,6 +64,7 @@ void initSelect(){
 				sec = getch();
 				if(sec==ESCAPE){
 					x=0;
+					goto RETORNO;
 				}else{
 					Sleep(1);
 					goto NO_RETURN;
