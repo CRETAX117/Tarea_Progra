@@ -163,7 +163,8 @@ void exitit(){
 void erase(int xi, int yi, int xf, int yf){
 	for(int i=yi; i<=yf; i++){
 		for(int j=xi; j<=xf; j++){
-			gotoxy(j, i); printf(" ");
+			gotoxy(j, i
+			); printf(" ");
 		}
 	}
 }
